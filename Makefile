@@ -1,4 +1,4 @@
-export PATH := venv/bin/:$(PATH)
+export PATH := $(shell pwd)/venv/bin/:$(PATH)
 all: venv
 
 venv:

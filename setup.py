@@ -13,7 +13,7 @@ setuptools.setup(
 
     packages=setuptools.find_packages('.', exclude=('tests*',)),
 
-    install_requires=['requests'],
+    install_requires=['pendulum'],
     entry_points={
         'console_scripts': [
             'alfred-datetime = alfred_datetime.cli:main',
