@@ -96,7 +96,7 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>126</integer>
+				<integer>122</integer>
 				<key>keyword</key>
 				<string>dt</string>
 				<key>queuedelaycustom</key>
