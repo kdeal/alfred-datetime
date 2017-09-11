@@ -9,9 +9,7 @@ Handle datetime formatting and math with alfred
 ## Install
 
 ## Todo
-- Handle next,previous {day, week, month, etc}
-- Handle startof,endof {day, week, month, etc}
-- Handle +/- {seconds, minutes, months, etc}
+- Handle time zone better
 - Improve docs
 - Allow users to define formats
 - Add some tests to make sure things work
