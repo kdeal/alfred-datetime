@@ -4,9 +4,9 @@
 
 Handle datetime formatting and math with alfred
 
-## Usage
-
 ## Install
+
+## Usage
 
 ## Todo
 - Handle time zone better

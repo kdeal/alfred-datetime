@@ -110,9 +110,9 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>PATH=$HOME/repos/kdeal/alfred-datetime/venv/bin:$PATH
+				<string>export PYTHONPATH=$(pwd)/vendor/lib/python2.7/site-packages/:$PYTHONPATH
 
-alfred-datetime {query}</string>
+/usr/bin/python -m alfred_datetime.cli {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
