@@ -6,7 +6,11 @@ Handle datetime formatting and math with alfred
 
 ## Install
 
+Download the latest [release](ghreleases) and double click to install.
+
 ## Usage
+
+`dt`
 
 ## Todo
 - Handle time zone better
