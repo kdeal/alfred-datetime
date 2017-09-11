@@ -6,7 +6,7 @@ Handle datetime formatting and math with alfred
 
 ## Install
 
-Download the latest [release](ghreleases) and double click to install.
+Download the latest [release](https://github.com/kdeal/alfred-datetime/releases) and double click to install.
 
 ## Usage
 
