@@ -6,11 +6,22 @@ Handle datetime formatting and math with alfred
 
 ## Install
 
-Download the latest [release](https://github.com/kdeal/alfred-datetime/releases) and double click to install.
+Download the latest [release](https://github.com/kdeal/alfred-datetime/releases) and double click to add to alfred.
 
 ## Usage
 
-`dt`
+### `dt`
+- Specify a formatted time to switch to another format
+- Use `now`, `today`, `tomorrow`, `yesterday`
+- `+/- <amount> <unit>` to add or subtract time
+    - units: microseconds(ms), seconds(s), minutes(min), hours(hr), days(dy), weeks(wk), months(mn), years(yr)
+- `next|prev <day of the week>`
+- `start|end <unit>`
+    - units: day, week, month, year, decade, century
+- Use a combination of the commands above
+    - `dt now + 2 weeks 2 days`
+    - `dt next monday + 2 days`
+    - `dt 2017-09-10 22:10:44 start week`
 
 ## Todo
 - Handle time zone better
