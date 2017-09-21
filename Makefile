@@ -1,4 +1,4 @@
-export PATH := $(shell pwd)/venv2/bin/:$(PATH)
+export PATH := $(shell pwd)/venv/bin/:$(PATH)
 export VERSION := $(shell python2.7 setup.py --version)
 all: venv
 

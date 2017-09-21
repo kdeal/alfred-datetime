@@ -13,6 +13,7 @@ from .parser import ParseError
 ALFRED_TIME_FORMATS = (
     'to_datetime_string',
     'isoformat',
+    'timestamp',
     'to_date_string',
     'to_time_string',
     'to_formatted_date_string',
