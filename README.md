@@ -18,6 +18,10 @@ Download the latest [release](https://github.com/kdeal/alfred-datetime/releases)
 - `next|prev <day of the week>`
 - `start|end <unit>`
     - units: day, week, month, year, decade, century
+- `to <timezone>`
+    - accepts local, utc, or a timezone
+    - partial match timezone if it matches a single timezone (i.e. `york` matches
+    `America/New_York`)
 - Use a combination of the commands above
     - `dt now + 2 weeks 2 days`
     - `dt next monday + 2 days`

@@ -8,6 +8,10 @@ from traceback import print_exc
 
 import pendulum
 from pendulum.parsing.exceptions import ParserError
+from pytzdata import get_timezones
+
+
+TIMEZONES = tuple(tz.lower() for tz in get_timezones()) + ('local', 'utc')
 
 # Use OrderedDict so there a priority to partial matches
 TIME_STRINGS = OrderedDict({
@@ -15,6 +19,7 @@ TIME_STRINGS = OrderedDict({
     'today': pendulum.today,
     'tomorrow': pendulum.tomorrow,
     'yesterday': pendulum.yesterday,
+    'utc': pendulum.utcnow,
 })
 DAYS_OF_WEEK = {
     'monday': pendulum.MONDAY,
@@ -112,6 +117,19 @@ def parse_end_of(query, time):
         return None
 
 
+def parse_to(query, time):
+    if query not in TIMEZONES:
+        match_tzs = [
+            tz for tz in TIMEZONES
+            if all((segment in tz) for segment in query.split())
+        ]
+        if len(match_tzs) == 1:
+            query = match_tzs[0]
+        else:
+            return None
+    return time.in_timezone(query)
+
+
 PARSING_FUNCS = OrderedDict({
     '+': parse_addition,
     'add': parse_addition,
@@ -126,6 +144,7 @@ PARSING_FUNCS = OrderedDict({
     'start': parse_start_of,
     'end of': parse_end_of,
     'end': parse_end_of,
+    'to': parse_to,
 })
 
 
@@ -141,7 +160,7 @@ def parse_time(query):
         if time_string.startswith(query.lower()):
             return time()
     try:
-        return pendulum.from_timestamp(int(query))
+        return pendulum.from_timestamp(float(query), 'local')
     except ValueError:
         pass
 
@@ -153,14 +172,15 @@ def parse_time(query):
 
 
 def parse_segment(query, time):
+    norm_query = query.strip().lower()
     for prefix, parsing_func in PARSING_FUNCS.items():
-        if query.startswith(prefix):
+        if norm_query.startswith(prefix):
             if time is None:
                 time = pendulum.now()
 
-            no_prefix = query[len(prefix):].strip()
+            no_prefix = norm_query[len(prefix):].strip()
 
-            return parsing_func(no_prefix, time)
+            return parsing_func(no_prefix.lower(), time)
 
     if time is None:
         return parse_time(query)
