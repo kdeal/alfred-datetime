@@ -19,7 +19,7 @@ TIME_STRINGS = OrderedDict({
     'today': pendulum.today,
     'tomorrow': pendulum.tomorrow,
     'yesterday': pendulum.yesterday,
-    'utc': pendulum.utcnow,
+    'utc': lambda: pendulum.now('UTC'),
 })
 DAYS_OF_WEEK = {
     'monday': pendulum.MONDAY,
@@ -81,6 +81,8 @@ def parse_day_of_week(query):
     for day, pendulum_day in DAYS_OF_WEEK.items():
         if day.startswith(query):
             return pendulum_day
+
+    return None
 
 
 def parse_next(query, time):
@@ -184,8 +186,8 @@ def parse_segment(query, time):
 
     if time is None:
         return parse_time(query)
-    else:
-        raise ParseError('Time string was not the first argument')
+
+    raise ParseError('Time string was not the first argument')
 
 
 def is_timezone(segment, prev_segments):
